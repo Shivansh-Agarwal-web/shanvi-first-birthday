@@ -1,120 +1,92 @@
-/* General Styling */
+/* ========================================= */
+/* NEW FESTIVE STYLE (VERSION 2)        */
+/* ========================================= */
+
+/* --- 1. FONTS & COLORS --- */
 :root {
-    --primary-pink: #FF6B81;
-    --secondary-orange: #FFC145;
-    --accent-yellow: #F7E733;
-    --light-green: #90EE90;
-    --background-cream: #FFF8E1;
-    --text-dark: #4A4A4A;
+    --primary-color: #E94560; /* A richer, deeper pink */
+    --secondary-color: #FFAA4C; /* A warm marigold orange */
+    --background-color: #FFFBF5; /* A very light cream */
+    --text-color: #57463f; /* A soft, dark brown */
+    --border-color: #FFD5A3; /* A light gold for borders */
+    
     --font-heading: 'Nunito', sans-serif;
     --font-body: 'Poppins', sans-serif;
+    /* We'll add a new font for the name directly in the HTML */
 }
 
+/* --- 2. GENERAL & BACKGROUND --- */
 body {
     margin: 0;
     font-family: var(--font-body);
-    background-color: var(--background-cream);
-    color: var(--text-dark);
+    background-color: var(--background-color);
+    /* A subtle, repeating Indian-style background pattern */
+    background-image: url('https://www.transparenttextures.com/patterns/az-subtle.png');
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow-x: hidden;
+    padding: 20px 0;
 }
 
 .hidden {
     display: none !important;
 }
 
-/* Envelope Styling */
+/* --- 3. ENVELOPE (Slightly improved colors) --- */
 .envelope {
     position: relative;
     width: 300px;
     height: 200px;
-    background-color: var(--secondary-orange);
+    background-color: var(--secondary-color);
     cursor: pointer;
     transition: transform 0.5s ease-in-out;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    border-radius: 5px;
 }
-
 .envelope-flap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background-color: var(--secondary-orange);
-    transform-origin: top;
-    transition: transform 0.5s ease-in-out;
-    border-bottom: 2px solid rgba(0,0,0,0.1);
+    position: absolute; top: 0; left: 0; width: 100%; height: 100px;
+    background-color: var(--secondary-color); transform-origin: top;
+    transition: transform 0.5s ease-in-out; border-bottom: 2px solid rgba(0,0,0,0.1);
     clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
-
 .envelope-body {
-    position: absolute;
-    top: 100px;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background-color: var(--secondary-orange);
+    position: absolute; top: 100px; left: 0; width: 100%; height: 100px;
+    background-color: var(--secondary-color); border-radius: 0 0 5px 5px;
 }
-
 .envelope-content-preview {
-    position: absolute;
-    top: 20px;
-    left: 10px;
-    width: 280px;
-    height: 160px;
-    background: white;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    color: var(--primary-pink);
-    transition: transform 0.5s ease-in-out;
+    position: absolute; top: 20px; left: 10px; width: 280px; height: 160px;
+    background: white; text-align: center; display: flex; justify-content: center;
+    align-items: center; font-family: var(--font-heading); font-size: 1.5rem;
+    color: var(--primary-color); transition: transform 0.5s ease-in-out;
 }
-
 #open-button {
-    position: absolute;
-    bottom: -60px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-    font-family: var(--font-heading);
-    font-size: 1rem;
-    background-color: var(--primary-pink);
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: absolute; bottom: -60px; left: 50%; transform: translateX(-50%);
+    padding: 10px 20px; font-family: var(--font-heading); font-size: 1rem;
+    background-color: var(--primary-color); color: white; border: none;
+    border-radius: 20px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
+.envelope.open .envelope-flap { transform: rotateX(180deg); }
+.envelope.open .envelope-content-preview { transform: translateY(-120px); }
+.envelope.disappear { transform: scale(0); }
 
-/* Envelope Open Animation */
-.envelope.open .envelope-flap {
-    transform: rotateX(180deg);
-}
 
-.envelope.open .envelope-content-preview {
-    transform: translateY(-120px);
-}
-
-.envelope.disappear {
-    transform: scale(0);
-}
-
-/* Invitation Card Styling */
+/* --- 4. THE NEW INVITATION CARD DESIGN --- */
 .card {
     background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    /* A layered shadow effect for depth */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1), 0 0 0 10px var(--background-color);
     width: 90%;
     max-width: 500px;
     margin: 40px 0;
+    position: relative; /* Needed for decorative elements */
     opacity: 0;
     transform: scale(0.9);
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    overflow: hidden; /* Hide overflowing decorative elements */
 }
 
 .card.visible {
@@ -122,208 +94,161 @@ body {
     transform: scale(1);
 }
 
+/* Adding decorative floral corners */
+.card::before, .card::after {
+    content: '🌸'; /* You can replace this with a URL to an image: content: url('images/flower.png'); */
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.5;
+    z-index: 1;
+}
+.card::before {
+    top: -10px;
+    left: -10px;
+}
+.card::after {
+    bottom: -10px;
+    right: -10px;
+    transform: rotate(180deg);
+}
+
 .card-content {
-    padding: 20px 30px;
+    padding: 25px 35px;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 .hanumanji-img {
-    width: 80px;
+    width: 70px;
     margin-bottom: 10px;
+    filter: sepia(0.2); /* Gives a slightly warmer, vintage feel */
 }
 
 .baby-img {
-    width: 120px;
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
     border-radius: 50%;
-    border: 4px solid var(--primary-pink);
+    border: 5px solid var(--primary-color);
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
     margin-top: 15px;
-}
-
-.intro-text {
-    font-size: 0.9rem;
-    font-style: italic;
 }
 
 h1 {
     font-family: var(--font-body);
     font-weight: 400;
     font-size: 1.1rem;
-    line-height: 1.5;
-    margin: 5px 0 10px;
+    line-height: 1.6;
+    margin: 10px 0;
 }
 
 .baby-name {
-    font-family: var(--font-heading);
-    font-size: 3rem;
-    color: var(--primary-pink);
-    margin: 10px 0;
-    letter-spacing: 2px;
+    /* Using a beautiful script font for the name */
+    font-family: 'Tangerine', cursive;
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 5px 0;
+    line-height: 1;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 .event-details {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-/* Countdown Timer */
+/* --- 5. REDESIGNED DETAILS SECTIONS --- */
 .countdown {
     display: flex;
     justify-content: center;
     gap: 15px;
-    background-color: #fdf2f4;
+    background-color: rgba(255, 213, 163, 0.2); /* Light gold background */
     padding: 15px;
     border-radius: 10px;
-    margin: 20px 0;
+    margin: 25px 0;
+    border: 1px solid var(--border-color);
     position: relative;
 }
-
-.countdown div {
-    font-family: var(--font-heading);
-    color: var(--primary-pink);
-}
-
-.countdown span {
-    display: block;
-    font-size: 2rem;
-}
-
+.countdown div { font-family: var(--font-heading); color: var(--primary-color); }
+.countdown span { display: block; font-size: 2rem; }
 #confetti-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 10;
-}
-
-/* Schedule & Venue */
-.schedule, .venue {
-    margin: 25px 0;
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 10;
 }
 
 .schedule {
     display: flex;
     justify-content: space-around;
     text-align: center;
+    margin: 30px 0;
+    padding: 20px 0;
+    border-top: 1px dashed var(--border-color);
+    border-bottom: 1px dashed var(--border-color);
 }
-
 .schedule-item h3, .venue h3 {
     font-family: var(--font-heading);
-    color: var(--primary-pink);
+    color: var(--primary-color);
     margin-bottom: 5px;
+    font-size: 1.1rem;
 }
-
-.schedule-item p, .venue p {
-    margin: 0;
-    font-size: 0.9rem;
-}
+.schedule-item p, .venue p { margin: 0; font-size: 1rem; }
 
 .map-button, #gallery-button {
     display: inline-block;
-    background-color: var(--secondary-orange);
-    color: var(--text-dark);
+    background-color: var(--secondary-color);
+    color: #fff;
     text-decoration: none;
-    padding: 12px 25px;
-    border-radius: 25px;
+    padding: 12px 30px;
+    border-radius: 30px;
     margin-top: 15px;
     font-family: var(--font-heading);
     font-weight: 700;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
 }
-
+.map-button:hover, #gallery-button:hover {
+    transform: translateY(-2px);
+}
 #gallery-button {
-    background-color: var(--primary-pink);
-    color: white;
+    background-color: var(--primary-color);
 }
 
-.rsvp {
-    margin-top: 30px;
-    font-weight: 600;
-}
+.rsvp { margin-top: 30px; font-weight: 600; font-size: 1.1rem; }
+.closing-text { margin-top: 10px; font-size: 1.1rem; }
 
-.closing-text {
-    margin-top: 10px;
-    font-size: 1.1rem;
-}
-
-/* Gallery Modal */
+/* --- 6. GALLERY & RESPONSIVE --- */
+/* (No changes to modal, but colors will update) */
 .modal {
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed; z-index: 100; left: 0; top: 0;
+    width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7);
     overflow: auto;
 }
-
 .modal-content {
-    background-color: var(--background-cream);
-    margin: 5% auto;
-    padding: 20px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 900px;
-    text-align: center;
+    background-color: var(--background-color); margin: 5% auto; padding: 20px;
+    border-radius: 10px; width: 90%; max-width: 900px; text-align: center;
 }
-
 .modal-content h3 {
-    font-family: var(--font-heading);
-    color: var(--primary-pink);
+    font-family: var(--font-heading); color: var(--primary-color);
     font-size: 1.8rem;
 }
-
 .close-button {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
+    position: absolute; top: 15px; right: 35px; color: #fff;
+    font-size: 40px; font-weight: bold; cursor: pointer;
 }
-
 .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px;
-    margin-top: 20px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; margin-top: 20px;
 }
+.gallery-grid img { width: 100%; height: auto; border-radius: 8px; }
 
-.gallery-grid img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
-}
-
-/* Responsive Design */
 @media (max-width: 600px) {
-    .card-content {
-        padding: 15px 20px;
-    }
-
-    .baby-name {
-        font-size: 2.5rem;
-    }
-
-    .countdown {
-        gap: 10px;
-    }
-
-    .countdown span {
-        font-size: 1.5rem;
-    }
-
-    .schedule {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    }
+    body { padding: 0; }
+    .card { width: 100%; margin: 0; border-radius: 0; box-shadow: none; }
+    .card-content { padding: 20px; }
+    .baby-name { font-size: 4rem; }
+    .countdown span { font-size: 1.5rem; }
+    .schedule { flex-direction: column; gap: 20px; }
 }
