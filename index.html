@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shanvi's 1st Birthday!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="envelope" class="envelope">
+        <div class="envelope-flap"></div>
+        <div class="envelope-body"></div>
+        <div class="envelope-content-preview">
+            <p>An Invitation For You</p>
+        </div>
+        <button id="open-button">Click to Open</button>
+    </div>
+
+    <div id="card" class="card hidden">
+        <div class="card-content">
+            <img src="images/hanumanji.jpg" alt="Shree Hanumanji" class="hanumanji-img">
+            
+            <p class="intro-text">With the divine blessings of Shree Hanumanji,</p>
+            <h1>You're invited to celebrate the 1st Birthday of our little angel</h1>
+            
+            <img src="images/baby-cartoon.png" alt="Baby Shanvi" class="baby-img">
+            <h2 class="baby-name">SHANVI</h2>
+            
+            <p class="event-details">with Sundarkand Path & Bhajan Sandhya followed by lunch.</p>
+
+            <div id="countdown" class="countdown">
+                <div><span id="days">0</span> Days</div>
+                <div><span id="hours">0</span> Hours</div>
+                <div><span id="minutes">0</span> Minutes</div>
+                <div><span id="seconds">0</span> Seconds</div>
+            </div>
+            <canvas id="confetti-canvas"></canvas>
+
+            <div class="schedule">
+                <div class="schedule-item">
+                    <h3>Date</h3>
+                    <p>17th September (Wednesday)</p>
+                </div>
+                <div class="schedule-item">
+                    <h3>Sundarkand Path</h3>
+                    <p>11:00 AM</p>
+                </div>
+                <div class="schedule-item">
+                    <h3>Lunch</h3>
+                    <p>2:00 PM</p>
+                </div>
+            </div>
+
+            <div class="venue">
+                <h3>Venue</h3>
+                <p>Wadhaawa Greens Resort, Darhiyal Road, Kashipur</p>
+                <a href="https://goo.gl/maps/<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3483.246890137966!2d78.96015847552133!3d29.186857375366696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a430acfa7e8c3%3A0xd059469c56d0c76f!2sWADHAAWA%20GREENS%20RESORT!5e0!3m2!1sen!2sin!4v1756924659982!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" target="_blank" class="map-button">View on Google Maps</a>
+            </div>
+
+            <div class="rsvp">
+                <p>RSVP: Kante Family</p>
+                <p class="closing-text">Your presence will make the day truly special 💖</p>
+            </div>
+
+            <button id="gallery-button">A Glimpse of Her First Year 📸</button>
+        </div>
+    </div>
+
+    <div id="gallery-modal" class="modal hidden">
+        <span id="close-modal" class="close-button">&times;</span>
+        <div class="modal-content">
+            <h3>Shanvi's First Year</h3>
+            <div id="gallery-grid" class="gallery-grid">
+                </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
