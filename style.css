@@ -1,254 +1,412 @@
 /* ========================================= */
-/* NEW FESTIVE STYLE (VERSION 2)        */
+/* FESTIVE STYLE (VERSION 3 - ENHANCED)    */
 /* ========================================= */
 
 /* --- 1. FONTS & COLORS --- */
 :root {
-    --primary-color: #E94560; /* A richer, deeper pink */
-    --secondary-color: #FFAA4C; /* A warm marigold orange */
-    --background-color: #FFFBF5; /* A very light cream */
-    --text-color: #57463f; /* A soft, dark brown */
-    --border-color: #FFD5A3; /* A light gold for borders */
+    --primary-color: #D32F2F; /* A vibrant deep red/pink for celebration */
+    --secondary-color: #FF8F00; /* Bright festive orange */
+    --accent-gold: #FFD700; /* Gold for richness */
+    --background-light: #FFF8E1; /* Soft cream */
+    --text-dark: #4E342E; /* Dark brown for readability */
     
     --font-heading: 'Nunito', sans-serif;
     --font-body: 'Poppins', sans-serif;
-    /* We'll add a new font for the name directly in the HTML */
+    --font-name: 'Tangerine', cursive; /* Elegant script for Shanvi's name */
 }
 
 /* --- 2. GENERAL & BACKGROUND --- */
 body {
     margin: 0;
     font-family: var(--font-body);
-    background-color: var(--background-color);
-    /* A subtle, repeating Indian-style background pattern */
-    background-image: url('https://www.transparenttextures.com/patterns/az-subtle.png');
-    color: var(--text-color);
+    background-color: var(--background-light);
+    /* Traditional Indian pattern - feel free to replace with your own pattern image if you have one! */
+    background-image: url('https://www.transparenttextures.com/patterns/indian-floral-pattern.png'); /* New Pattern! */
+    color: var(--text-dark);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 20px 0;
+    overflow-x: hidden; /* Prevent horizontal scroll from animations */
 }
 
-.hidden {
-    display: none !important;
-}
+.hidden { display: none !important; }
 
-/* --- 3. ENVELOPE (Slightly improved colors) --- */
+/* --- 3. ENVELOPE STYLING (Minor Color Adjustments) --- */
 .envelope {
-    position: relative;
-    width: 300px;
-    height: 200px;
-    background-color: var(--secondary-color);
-    cursor: pointer;
+    position: relative; width: 300px; height: 200px;
+    background-color: var(--secondary-color); cursor: pointer;
     transition: transform 0.5s ease-in-out;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); border-radius: 8px;
 }
 .envelope-flap {
     position: absolute; top: 0; left: 0; width: 100%; height: 100px;
     background-color: var(--secondary-color); transform-origin: top;
     transition: transform 0.5s ease-in-out; border-bottom: 2px solid rgba(0,0,0,0.1);
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    clip-path: polygon(0 0, 100% 0, 50% 100%); border-radius: 8px 8px 0 0;
 }
 .envelope-body {
     position: absolute; top: 100px; left: 0; width: 100%; height: 100px;
-    background-color: var(--secondary-color); border-radius: 0 0 5px 5px;
+    background-color: var(--secondary-color); border-radius: 0 0 8px 8px;
 }
 .envelope-content-preview {
     position: absolute; top: 20px; left: 10px; width: 280px; height: 160px;
     background: white; text-align: center; display: flex; justify-content: center;
     align-items: center; font-family: var(--font-heading); font-size: 1.5rem;
     color: var(--primary-color); transition: transform 0.5s ease-in-out;
+    border-radius: 5px;
 }
 #open-button {
     position: absolute; bottom: -60px; left: 50%; transform: translateX(-50%);
-    padding: 10px 20px; font-family: var(--font-heading); font-size: 1rem;
+    padding: 10px 25px; font-family: var(--font-heading); font-size: 1.1rem;
     background-color: var(--primary-color); color: white; border: none;
-    border-radius: 20px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 25px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
 }
+#open-button:hover {
+    background-color: #E64A19; /* Slightly darker on hover */
+    transform: translateX(-50%) translateY(-3px);
+}
+
+/* Envelope Open Animation */
 .envelope.open .envelope-flap { transform: rotateX(180deg); }
 .envelope.open .envelope-content-preview { transform: translateY(-120px); }
-.envelope.disappear { transform: scale(0); }
+.envelope.disappear { transform: scale(0); opacity: 0; }
 
-
-/* --- 4. THE NEW INVITATION CARD DESIGN --- */
+/* --- 4. INVITATION CARD DESIGN (Major Update) --- */
 .card {
     background-color: #ffffff;
-    border: 2px solid var(--border-color);
-    border-radius: 10px;
-    /* A layered shadow effect for depth */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1), 0 0 0 10px var(--background-color);
-    width: 90%;
-    max-width: 500px;
-    margin: 40px 0;
-    position: relative; /* Needed for decorative elements */
+    border: 3px solid var(--accent-gold); /* Thicker gold border */
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), 0 0 0 15px var(--background-light); /* Enhanced layered shadow */
+    width: 95%; /* Slightly wider */
+    max-width: 550px; /* Max width for larger screens */
+    margin: 40px auto; /* Centered with auto margins */
+    position: relative;
     opacity: 0;
     transform: scale(0.9);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-    overflow: hidden; /* Hide overflowing decorative elements */
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    overflow: hidden; /* Crucial for containing animations */
+    padding-bottom: 50px; /* Space for bottom animations */
 }
 
-.card.visible {
-    opacity: 1;
-    transform: scale(1);
-}
+.card.visible { opacity: 1; transform: scale(1); }
 
-/* Adding decorative floral corners */
-.card::before, .card::after {
-    content: '🌸'; /* You can replace this with a URL to an image: content: url('images/flower.png'); */
+/* Decorative elements around the card */
+.top-decorations, .bottom-decorations {
     position: absolute;
-    font-size: 3rem;
-    opacity: 0.5;
-    z-index: 1;
+    width: 100%;
+    left: 0;
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: 5; /* Above card content, below modal */
 }
-.card::before {
-    top: -10px;
-    left: -10px;
+
+.top-decorations {
+    top: -40px; /* Adjust as needed */
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
-.card::after {
-    bottom: -10px;
-    right: -10px;
-    transform: rotate(180deg);
+
+.diya-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
 }
+
+.diya {
+    width: 40px; /* Size of the diya image */
+    height: auto;
+    animation: sway 4s ease-in-out infinite alternate;
+    transform-origin: top center;
+}
+
+.diya-group.right .diya { animation-delay: 0.5s; }
+
+.flower-motif {
+    font-size: 1.5rem; /* Size of the flower emoji */
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    animation: bloom 2s ease-out infinite alternate;
+}
+
+@keyframes sway {
+    0% { transform: rotate(5deg); }
+    100% { transform: rotate(-5deg); }
+}
+
+@keyframes bloom {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    100% { transform: scale(1.1); opacity: 1; }
+}
+
 
 .card-content {
-    padding: 25px 35px;
+    padding: 30px 40px; /* Increased padding */
     text-align: center;
     position: relative;
-    z-index: 2;
+    z-index: 10; /* Ensure content is above decorations */
+    background-color: rgba(255,255,255,0.8); /* Slightly transparent white background for readability */
+    border-radius: 10px;
 }
 
 .hanumanji-img {
-    width: 70px;
-    margin-bottom: 10px;
-    filter: sepia(0.2); /* Gives a slightly warmer, vintage feel */
+    width: 100px; /* Increased size */
+    margin-bottom: 15px;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
 }
 
 .baby-img {
-    width: 130px;
-    height: 130px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 5px solid var(--primary-color);
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    margin-top: 15px;
+    width: 140px; height: 140px;
+    border: 6px solid var(--primary-color); /* Thicker border */
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    margin-top: 20px; margin-bottom: 10px;
 }
 
 h1 {
-    font-family: var(--font-body);
-    font-weight: 400;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin: 10px 0;
+    font-family: var(--font-body); font-weight: 500; /* Slightly bolder */
+    font-size: 1.2rem; line-height: 1.6; margin: 10px 0; color: var(--text-dark);
+}
+.intro-text {
+    font-size: 1rem; font-style: italic; color: var(--text-dark); margin-bottom: 10px;
+}
+.event-details {
+    margin-top: 15px; margin-bottom: 30px;
+    font-size: 1.05rem;
+    color: var(--text-dark);
 }
 
 .baby-name {
-    /* Using a beautiful script font for the name */
-    font-family: 'Tangerine', cursive;
-    font-size: 5rem;
+    font-family: var(--font-name); /* Tangerine font */
+    font-size: 5.5rem; /* Larger and elegant */
     font-weight: 700;
     color: var(--primary-color);
-    margin: 5px 0;
-    line-height: 1;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    margin: 5px 0; line-height: 1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Stronger shadow for pop */
+    text-transform: capitalize; /* Ensure not all caps */
 }
 
-.event-details {
-    margin-bottom: 25px;
-}
 
-/* --- 5. REDESIGNED DETAILS SECTIONS --- */
-.countdown {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    background-color: rgba(255, 213, 163, 0.2); /* Light gold background */
-    padding: 15px;
+/* --- 5. SCHEDULE & VENUE --- */
+.schedule {
+    display: grid; /* Use grid for better layout with 4 items */
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 15px; /* Spacing between items */
+    margin: 30px 0; padding: 20px;
+    border: 1px dashed var(--accent-gold); /* Dashed border for festive feel */
     border-radius: 10px;
-    margin: 25px 0;
-    border: 1px solid var(--border-color);
-    position: relative;
+    background-color: rgba(255, 255, 255, 0.7);
 }
-.countdown div { font-family: var(--font-heading); color: var(--primary-color); }
-.countdown span { display: block; font-size: 2rem; }
+.schedule-item {
+    text-align: center;
+}
+.schedule-item h3 {
+    font-family: var(--font-heading); color: var(--primary-color);
+    margin-bottom: 5px; font-size: 1.2rem;
+}
+.schedule-item p { margin: 0; font-size: 1rem; }
+
+.venue { margin: 25px 0; padding: 15px; border-radius: 10px; background-color: rgba(255, 255, 255, 0.7); }
+.venue h3 { font-family: var(--font-heading); color: var(--primary-color); margin-bottom: 8px; font-size: 1.2rem; }
+.venue p { margin: 0; font-size: 1rem; }
+
+/* Removed .map-button as per request */
+
+.rsvp { margin-top: 30px; font-weight: 600; font-size: 1.1rem; color: var(--text-dark); }
+.closing-text { margin-top: 10px; font-size: 1.1rem; }
+
+
+/* --- 6. COUNTDOWN TIMER (Relocated & Styled) --- */
+.countdown {
+    display: flex; justify-content: center; gap: 20px;
+    background-color: var(--secondary-color); /* Bright background for visibility */
+    padding: 18px; border-radius: 10px;
+    margin: 30px auto; /* Centered */
+    border: 2px solid var(--accent-gold);
+    position: relative; /* For confetti canvas */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    max-width: 400px;
+}
+.countdown div { font-family: var(--font-heading); color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+.countdown span { display: block; font-size: 2.5rem; line-height: 1; }
 #confetti-canvas {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     pointer-events: none; z-index: 10;
 }
 
-.schedule {
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    margin: 30px 0;
-    padding: 20px 0;
-    border-top: 1px dashed var(--border-color);
-    border-bottom: 1px dashed var(--border-color);
-}
-.schedule-item h3, .venue h3 {
-    font-family: var(--font-heading);
-    color: var(--primary-color);
-    margin-bottom: 5px;
-    font-size: 1.1rem;
-}
-.schedule-item p, .venue p { margin: 0; font-size: 1rem; }
 
-.map-button, #gallery-button {
+/* --- 7. GALLERY BUTTON (Prominent Placement) --- */
+#gallery-button {
     display: inline-block;
-    background-color: var(--secondary-color);
-    color: #fff;
+    background-color: var(--primary-color); /* Strong primary color */
+    color: white;
     text-decoration: none;
-    padding: 12px 30px;
+    padding: 15px 35px; /* Larger button */
     border-radius: 30px;
-    margin-top: 15px;
+    margin-top: 30px; /* More space from timer */
     font-family: var(--font-heading);
     font-weight: 700;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    font-size: 1.2rem; /* Larger text */
+    letter-spacing: 1px;
 }
-.map-button:hover, #gallery-button:hover {
-    transform: translateY(-2px);
-}
-#gallery-button {
-    background-color: var(--primary-color);
+#gallery-button:hover {
+    background-color: #A01C2C; /* Darker on hover */
+    transform: translateY(-3px) scale(1.02);
 }
 
-.rsvp { margin-top: 30px; font-weight: 600; font-size: 1.1rem; }
-.closing-text { margin-top: 10px; font-size: 1.1rem; }
 
-/* --- 6. GALLERY & RESPONSIVE --- */
-/* (No changes to modal, but colors will update) */
+/* --- 8. BOTTOM ANIMATIONS (Balloons & Gift Boxes) --- */
+.bottom-decorations {
+    bottom: -30px; /* Position them just below the card */
+    display: flex;
+    justify-content: space-around; /* Distribute items */
+    padding: 0 10px;
+    box-sizing: border-box;
+    overflow: hidden; /* Important to keep animations within card bounds */
+    height: 80px; /* Give space for elements to animate */
+}
+
+.animated-item {
+    position: absolute; /* Allows independent movement */
+    font-size: 2.5rem;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    opacity: 0.8;
+}
+
+/* Balloon animations */
+.balloon-1 {
+    left: 10%;
+    bottom: -10%;
+    animation-name: floatUp1;
+    animation-delay: 0s;
+}
+.balloon-2 {
+    right: 15%;
+    bottom: -15%;
+    animation-name: floatUp2;
+    animation-delay: 3s;
+}
+
+@keyframes floatUp1 {
+    0% { transform: translateY(0) rotate(5deg); opacity: 0.8; }
+    50% { transform: translateY(-70px) rotate(-5deg); opacity: 1; }
+    100% { transform: translateY(0) rotate(5deg); opacity: 0.8; }
+}
+@keyframes floatUp2 {
+    0% { transform: translateY(0) rotate(-5deg); opacity: 0.8; }
+    50% { transform: translateY(-80px) rotate(5deg); opacity: 1; }
+    100% { transform: translateY(0) rotate(-5deg); opacity: 0.8; }
+}
+
+/* Giftbox animations */
+.giftbox-1 {
+    left: 25%;
+    bottom: -20px; /* Start slightly below */
+    font-size: 2rem;
+    animation-name: bounceAndWiggle;
+    animation-duration: 6s;
+    animation-delay: 1s;
+}
+.giftbox-2 {
+    right: 30%;
+    bottom: -10px; /* Start slightly below */
+    font-size: 2.2rem;
+    animation-name: bounceAndWiggle;
+    animation-duration: 7s;
+    animation-delay: 4s;
+}
+
+@keyframes bounceAndWiggle {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-5px) rotate(3deg); }
+    50% { transform: translateY(0) rotate(-3deg); }
+    75% { transform: translateY(-5px) rotate(3deg); }
+}
+
+
+/* --- 9. GALLERY MODAL & RESPONSIVE --- */
 .modal {
     position: fixed; z-index: 100; left: 0; top: 0;
-    width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7);
+    width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
     overflow: auto;
+    display: flex; /* Centering for modal content */
+    align-items: center;
+    justify-content: center;
 }
 .modal-content {
-    background-color: var(--background-color); margin: 5% auto; padding: 20px;
-    border-radius: 10px; width: 90%; max-width: 900px; text-align: center;
+    background-color: var(--background-light); margin: auto; padding: 25px;
+    border-radius: 12px; width: 90%; max-width: 900px; text-align: center;
+    border: 3px solid var(--accent-gold);
+    box-shadow: 0 5px 25px rgba(0,0,0,0.3);
 }
 .modal-content h3 {
     font-family: var(--font-heading); color: var(--primary-color);
-    font-size: 1.8rem;
+    font-size: 2rem; margin-bottom: 20px;
 }
 .close-button {
-    position: absolute; top: 15px; right: 35px; color: #fff;
-    font-size: 40px; font-weight: bold; cursor: pointer;
+    position: absolute; top: 20px; right: 20px; color: #fff;
+    font-size: 45px; font-weight: bold; cursor: pointer;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
-.gallery-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px; margin-top: 20px;
-}
-.gallery-grid img { width: 100%; height: auto; border-radius: 8px; }
+.close-button:hover { color: var(--accent-gold); }
 
-@media (max-width: 600px) {
-    body { padding: 0; }
-    .card { width: 100%; margin: 0; border-radius: 0; box-shadow: none; }
-    .card-content { padding: 20px; }
-    .baby-name { font-size: 4rem; }
-    .countdown span { font-size: 1.5rem; }
-    .schedule { flex-direction: column; gap: 20px; }
+.gallery-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* Slightly smaller min-width for more images */
+    gap: 12px; margin-top: 20px;
+}
+.gallery-grid img {
+    width: 100%; height: 150px; /* Fixed height for masonry-like feel, object-fit covers */
+    border-radius: 8px; object-fit: cover;
+    border: 2px solid var(--background-light); /* Slight border for images */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+.gallery-grid img:hover { transform: scale(1.03); }
+
+/* --- 10. RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+    .card { max-width: 95%; margin: 20px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1), 0 0 0 8px var(--background-light); }
+    .card::before, .card::after { font-size: 2.5rem; }
+    .top-decorations { top: -30px; }
+    .diya { width: 35px; }
+    .flower-motif { font-size: 1.2rem; }
+    .card-content { padding: 20px 25px; }
+    .hanumanji-img { width: 80px; }
+    .baby-img { width: 120px; height: 120px; border-width: 4px; }
+    h1 { font-size: 1rem; }
+    .baby-name { font-size: 4.5rem; }
+    .schedule { grid-template-columns: 1fr; gap: 10px; padding: 15px; } /* Single column on small screens */
+    .countdown { gap: 10px; padding: 15px; max-width: 300px; }
+    .countdown span { font-size: 2rem; }
+    #gallery-button { padding: 12px 25px; font-size: 1rem; }
+    .animated-item { font-size: 2rem; }
+    .bottom-decorations { bottom: -20px; height: 60px; }
+    .modal-content { margin: 10% auto; padding: 15px; }
+    .close-button { top: 10px; right: 15px; font-size: 35px; }
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+    .gallery-grid img { height: 120px; }
+}
+
+@media (max-width: 480px) {
+    .envelope { width: 280px; height: 180px; }
+    .envelope-content-preview { font-size: 1.3rem; }
+    #open-button { bottom: -50px; padding: 8px 20px; font-size: 1rem; }
+    .card { border-radius: 0; box-shadow: none; border-left: none; border-right: none; } /* No border on very small screens */
+    .card::before, .card::after { display: none; } /* Hide corner emojis */
+    .hanumanji-img { width: 70px; }
+    .baby-img { width: 100px; height: 100px; }
+    .baby-name { font-size: 3.8rem; }
+    .countdown span { font-size: 1.8rem; }
+    .countdown { gap: 8px; }
+    .bottom-decorations { display: none; } /* Hide bottom animations on very small screens if they look too cluttered */
 }
