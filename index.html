@@ -3,73 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shanvi's 1st Birthday!</title>
+    <title>Shanvi's 1st Birthday Invitation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Poppins:wght@400;600&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="envelope" class="envelope">
-        <div class="envelope-flap"></div>
-        <div class="envelope-body"></div>
-        <div class="envelope-content-preview">
-            <p>An Invitation For You</p>
-        </div>
-        <button id="open-button">Click to Open</button>
+    <div class="background-container">
+        <div class="background-pattern"></div>
+        <div id="petal-container"></div>
     </div>
 
-    <div id="card" class="card hidden">
-        <div class="top-decorations">
-            <div class="diya-group left">
-                <span class="flower-motif">🌸</span>
-                <img src="images/diya.png" alt="Diya lamp" class="diya">
-            </div>
-            <div class="diya-group right">
-                <img src="images/diya.png" alt="Diya lamp" class="diya">
-                <span class="flower-motif">🌸</span>
-            </div>
+    <div id="card" class="card">
+        <div class="hanging-decorations">
+            <img src="images/hanging-garlands.png" alt="Hanging marigold and diya decorations">
         </div>
 
         <div class="card-content">
             <img src="images/hanumanji.png" alt="Shree Hanumanji" class="hanumanji-img">
             
-            <p class="intro-text">With the divine blessings of Shree Hanumanji,</p>
-            <h1>You're invited to join us in celebrating the 1st Birthday of our little angel</h1>
+            <p class="intro-text">With the divine blessings of Shree Hanumanji, We invite you to join us in celebrating the 1st Birthday of our little angel</p>
             
-            <img src="images/baby-cartoon.png" alt="Baby Shanvi" class="baby-img">
-            <h2 class="baby-name">Shanvi</h2>
+            <div class="baby-frame">
+                <img src="images/baby-cartoon.png" alt="Baby Shanvi" class="baby-img">
+            </div>
+            
+            <h1 class="baby-name">SHANVI</h1>
             
             <p class="event-details">with Sundarkand Path & Bhajan Sandhya followed by lunch.</p>
 
             <div class="schedule">
-                <div class="schedule-item">
-                    <h3>Date</h3>
-                    <p>17th September (Wednesday)</p>
-                </div>
-                <div class="schedule-item">
-                    <h3>Sundarkand Path</h3>
-                    <p>11:00 AM</p>
-                </div>
-                <div class="schedule-item">
-                    <h3>Breakfast</h3>
-                    <p>11:00 AM</p>
-                </div>
-                <div class="schedule-item">
-                    <h3>Lunch</h3>
-                    <p>2:00 PM</p>
-                </div>
+                <div class="schedule-item"><strong>Date:</strong> 17th September (Wednesday)</div>
+                <div class="schedule-item"><strong>Sundarkand Path:</strong> 11:00 AM</div>
+                <div class="schedule-item"><strong>Breakfast:</strong> 11:00 AM</div>
+                <div class="schedule-item"><strong>Lunch:</strong> 2:00 PM</div>
             </div>
 
             <div class="venue">
-                <h3>Venue</h3>
-                <p>Wadhaawa Greens Resort, Darhiyal Road, Kashipur</p>
+                <p><strong>Venue:</strong> Wadhaawa Greens Resort, Darhiyal Road, Kashipur</p>
             </div>
 
             <div class="rsvp">
-                <p>RSVP: Kante Family</p>
-                <p class="closing-text">Your presence will make the day truly special 💖</p>
+                <p><strong>RSVP:</strong> Kante Family</p>
+                <p class="closing-text">Your presence will make the day truly special ❤️</p>
             </div>
 
             <div id="countdown" class="countdown">
@@ -82,21 +60,13 @@
 
             <button id="gallery-button">A Glimpse of Her First Year 📸</button>
         </div>
-
-        <div class="bottom-decorations">
-            <div class="animated-item balloon balloon-1">🎈</div>
-            <div class="animated-item balloon balloon-2">🎈</div>
-            <div class="animated-item giftbox giftbox-1">🎁</div>
-            <div class="animated-item giftbox giftbox-2">🎁</div>
-        </div>
     </div>
 
     <div id="gallery-modal" class="modal hidden">
         <span id="close-modal" class="close-button">&times;</span>
         <div class="modal-content">
             <h3>Shanvi's First Year</h3>
-            <div id="gallery-grid" class="gallery-grid">
-            </div>
+            <div id="gallery-grid" class="gallery-grid"></div>
         </div>
     </div>
     
