@@ -74,7 +74,7 @@ body {
 .card {
     position: relative;
     z-index: 2;
-    background-image: url('images/card-main-background.jpg'); /* YOUR NEW MAIN BACKGROUND IMAGE */
+    background-image: url('images/card-main-background.jpeg'); /* YOUR NEW MAIN BACKGROUND IMAGE */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
