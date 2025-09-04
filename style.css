@@ -1,12 +1,12 @@
 /* ========================================= */
-/* FINAL FESTIVE DESIGN (READABILITY FIX V2) */
+/* FINAL VERSION (ALL ANIMATIONS & FIXES)    */
 /* ========================================= */
 
 :root {
     --primary-color: #D83A56; /* Deep Pink/Red */
     --secondary-color: #F7B733; /* Saffron/Gold Yellow */
-    --text-color: #4A2E2C; /* Dark Brown */
-    --text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow for readability */
+    --text-color: white; /* UPDATED: White for best contrast */
+    --text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* UPDATED: Stronger shadow */
     --background-light: #FFF5E1; /* Light Cream */
     
     --font-heading: 'Patua One', cursive;
@@ -30,14 +30,25 @@ body {
 
 .background-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 1; }
 .background-pattern { width: 100%; height: 100%; background-image: url('images/background-pattern.jpg'); background-size: cover; opacity: 0.15; }
-#petal-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* Petals are now in front of the card */
+#petal-container { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
 .petal { position: absolute; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 0 C-20 40, -20 90, 50 100 C120 90, 120 40, 50 0 Z" fill="%23FFB6C1"/></svg>'); background-size: contain; width: 20px; height: 20px; opacity: 0.7; animation: fall linear infinite; }
 @keyframes fall { to { transform: translateY(105vh) rotate(360deg); } }
 
-/* --- THE INVITATION CARD (UPDATED) --- */
+/* --- THE INVITATION CARD --- */
 .card {
     position: relative;
-    z-index: 2;
+    z-index: 2; /* Card is behind petals */
     background-image: url('images/card-main-background.jpeg');
     background-size: cover;
     background-position: center;
@@ -47,7 +58,7 @@ body {
     max-width: 500px;
     text-align: center;
     overflow: hidden;
-    padding: 30px 25px; /* Padding directly on the card */
+    padding: 30px 25px;
     
     opacity: 0;
     transform: scale(0.9);
@@ -56,14 +67,43 @@ body {
 
 .card.visible { opacity: 1; transform: scale(1); }
 
-/* --- CONTENT STYLING --- */
+/* --- TEXT ANIMATION KEYFRAME --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- CONTENT STYLING (WITH ANIMATION TRIGGERS) --- */
+.hanumanji-img, .intro-text, .baby-frame, .baby-name, .event-details, .schedule, .venue, .rsvp, .countdown, #gallery-button {
+    opacity: 0; /* Start hidden for animation */
+}
+
+/* When card is visible, trigger staggered animations on its children */
+.card.visible .hanumanji-img { animation: fadeInUp 0.6s ease-out 0.5s forwards; }
+.card.visible .intro-text { animation: fadeInUp 0.6s ease-out 0.7s forwards; }
+.card.visible .baby-frame { animation: fadeInUp 0.6s ease-out 0.9s forwards; }
+.card.visible .baby-name { animation: fadeInUp 0.6s ease-out 1.1s forwards; }
+.card.visible .event-details { animation: fadeInUp 0.6s ease-out 1.3s forwards; }
+.card.visible .schedule { animation: fadeInUp 0.6s ease-out 1.5s forwards; }
+.card.visible .venue { animation: fadeInUp 0.6s ease-out 1.6s forwards; }
+.card.visible .rsvp { animation: fadeInUp 0.6s ease-out 1.7s forwards; }
+.card.visible .countdown { animation: fadeInUp 0.6s ease-out 1.8s forwards; }
+.card.visible #gallery-button { animation: fadeInUp 0.6s ease-out 1.9s forwards; }
+
+
 .hanumanji-img { 
     width: 150px;
     margin-bottom: 20px; 
     filter: drop-shadow(0 3px 6px rgba(0,0,0,0.2)); 
 }
 .intro-text, .event-details, .schedule, .venue, .rsvp, .closing-text {
-    text-shadow: var(--text-shadow); /* Added for readability */
+    text-shadow: var(--text-shadow);
     color: var(--text-color);
 }
 .intro-text { font-size: 1.1rem; line-height: 1.6; margin: 0 auto 25px auto; max-width: 400px; }
