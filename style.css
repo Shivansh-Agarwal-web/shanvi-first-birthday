@@ -1,22 +1,23 @@
 /* ========================================= */
-/* FINAL FESTIVE DESIGN (FIX FOR READABILITY ON BACKGROUND IMAGE) */
+/* FINAL FESTIVE DESIGN (READABILITY FIX V2) */
 /* ========================================= */
 
 :root {
     --primary-color: #D83A56; /* Deep Pink/Red */
     --secondary-color: #F7B733; /* Saffron/Gold Yellow */
     --text-color: #4A2E2C; /* Dark Brown */
+    --text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow for readability */
     --background-light: #FFF5E1; /* Light Cream */
     
-    --font-heading: 'Patua One', cursive; /* Festive, strong font */
-    --font-body: 'Lato', sans-serif; /* Clean, modern, readable font */
+    --font-heading: 'Patua One', cursive;
+    --font-body: 'Lato', sans-serif;
 }
 
 /* --- BACKGROUND & ANIMATIONS --- */
 body {
     margin: 0;
     font-family: var(--font-body);
-    background: radial-gradient(circle, var(--secondary-color) 0%, #FF8C69 100%); /* Overall page background */
+    background: radial-gradient(circle, var(--secondary-color) 0%, #FF8C69 100%);
     color: var(--text-color);
     display: flex;
     justify-content: center;
@@ -27,48 +28,11 @@ body {
     overflow-x: hidden;
 }
 
-.background-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.background-pattern {
-    width: 100%;
-    height: 100%;
-    background-image: url('images/background-pattern.jpg');
-    background-size: cover;
-    opacity: 0.15;
-}
-
-#petal-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.petal {
-    position: absolute;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 0 C-20 40, -20 90, 50 100 C120 90, 120 40, 50 0 Z" fill="%23FFB6C1"/></svg>');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 20px;
-    height: 20px;
-    opacity: 0.7;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(105vh) rotate(360deg);
-    }
-}
+.background-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 1; }
+.background-pattern { width: 100%; height: 100%; background-image: url('images/background-pattern.jpg'); background-size: cover; opacity: 0.15; }
+#petal-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.petal { position: absolute; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 0 C-20 40, -20 90, 50 100 C120 90, 120 40, 50 0 Z" fill="%23FFB6C1"/></svg>'); background-size: contain; width: 20px; height: 20px; opacity: 0.7; animation: fall linear infinite; }
+@keyframes fall { to { transform: translateY(105vh) rotate(360deg); } }
 
 /* --- THE INVITATION CARD (UPDATED) --- */
 .card {
@@ -83,266 +47,80 @@ body {
     max-width: 500px;
     text-align: center;
     overflow: hidden;
-    padding: 20px; /* Give some space for the wrapper */
+    padding: 30px 25px; /* Padding directly on the card */
     
     opacity: 0;
     transform: scale(0.9);
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-.card.visible {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* NEW: This wrapper adds the semi-transparent layer for readability */
-.content-wrapper {
-    background-color: rgba(255, 250, 240, 0.9); /* Semi-transparent cream */
-    border-radius: 15px; /* Slightly smaller radius than the card */
-    padding: 30px 15px;
-}
-
-.card-content {
-    /* Padding is now handled by the content-wrapper */
-}
+.card.visible { opacity: 1; transform: scale(1); }
 
 /* --- CONTENT STYLING --- */
 .hanumanji-img { 
-    width: 180px;
-    height: auto;
+    width: 150px;
     margin-bottom: 20px; 
     filter: drop-shadow(0 3px 6px rgba(0,0,0,0.2)); 
 }
-
-.intro-text { 
-    font-size: 1.2rem; 
-    line-height: 1.6; 
-    margin: 0 auto 25px auto; 
-    max-width: 400px; 
-    padding: 0 15px;
+.intro-text, .event-details, .schedule, .venue, .rsvp, .closing-text {
+    text-shadow: var(--text-shadow); /* Added for readability */
     color: var(--text-color);
 }
-
-.baby-frame { 
-    display: inline-block; 
-    padding: 8px; 
-    background: radial-gradient(circle, var(--primary-color) 60%, var(--secondary-color) 100%); 
-    border-radius: 50%; 
-    margin-bottom: 10px; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
-}
-.baby-img { 
-    width: 130px; 
-    height: 130px; 
-    border-radius: 50%; 
-    border: 4px solid white; 
-    display: block; 
-}
-.baby-name { 
-    font-family: var(--font-heading); 
-    color: var(--primary-color); 
-    font-size: 4rem; 
-    margin: 0 0 20px 0; 
-    line-height: 1; 
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.1); 
-}
-.event-details { 
-    font-size: 1.1rem; 
-    margin-bottom: 30px; 
-    padding: 0 15px;
-    color: var(--text-color);
-}
-.schedule, .venue, .rsvp { 
-    margin-bottom: 25px; 
-    font-size: 1.05rem; 
-    line-height: 1.8; 
-    padding: 0 15px;
-    color: var(--text-color);
-}
+.intro-text { font-size: 1.1rem; line-height: 1.6; margin: 0 auto 25px auto; max-width: 400px; }
+.baby-frame { display: inline-block; padding: 8px; background: radial-gradient(circle, var(--primary-color) 60%, var(--secondary-color) 100%); border-radius: 50%; margin-bottom: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+.baby-img { width: 130px; height: 130px; border-radius: 50%; border: 4px solid white; display: block; }
+.baby-name { font-family: var(--font-heading); color: var(--primary-color); font-size: 4rem; margin: 0 0 20px 0; line-height: 1; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+.event-details { font-size: 1.1rem; margin-bottom: 30px; }
+.schedule, .venue, .rsvp { margin-bottom: 25px; font-size: 1.05rem; line-height: 1.8; }
 .schedule-item { margin-bottom: 5px; }
-.closing-text { 
-    font-size: 1.15rem; 
-    font-weight: bold; 
-    margin-top: 20px; 
-    color: var(--text-color);
-}
-
-.countdown { 
-    display: flex; 
-    justify-content: center; 
-    gap: 15px; 
-    background-color: var(--secondary-color); 
-    color: white; 
-    padding: 15px; 
-    border-radius: 10px; 
-    margin: 30px auto; 
-    width: 90%; 
-    max-width: 350px; 
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
-}
+.closing-text { font-size: 1.15rem; font-weight: bold; margin-top: 20px; }
+.countdown { display: flex; justify-content: center; gap: 15px; background-color: var(--secondary-color); color: white; padding: 15px; border-radius: 10px; margin: 30px auto; width: 90%; max-width: 350px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
 .countdown div { font-family: var(--font-heading); font-size: 0.9rem; }
 .countdown span { display: block; font-size: 1.8rem; line-height: 1; }
 #confetti-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
-#gallery-button { 
-    display: inline-block; 
-    background-color: var(--primary-color); 
-    color: white; 
-    padding: 15px 35px; 
-    border-radius: 30px; 
-    font-family: var(--font-heading); 
-    font-size: 1.2rem; 
-    text-decoration: none; 
-    border: none; 
-    cursor: pointer; 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
-    transition: all 0.3s ease; 
-}
+#gallery-button { display: inline-block; background-color: var(--primary-color); color: white; padding: 15px 35px; border-radius: 30px; font-family: var(--font-heading); font-size: 1.2rem; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: all 0.3s ease; }
 #gallery-button:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
 
 /* --- GALLERY MODAL --- */
-.modal {
-    position: fixed; z-index: 100; left: 0; top: 0;
-    width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8);
-    display: flex; align-items: center; justify-content: center;
-}
+.modal { position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); display: flex; align-items: center; justify-content: center; }
 .modal-content { background-color: var(--background-light); padding: 25px; border-radius: 12px; width: 90%; max-width: 900px; text-align: center; }
 .modal-content h3 { font-family: var(--font-heading); color: var(--primary-color); font-size: 2rem; margin-bottom: 20px; }
 .close-button { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 45px; font-weight: bold; cursor: pointer; }
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-top: 20px; max-height: 70vh; overflow-y: auto; }
 .gallery-grid img { width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
 
-
 /* --- ENVELOPE STYLING --- */
-.envelope {
-    position: relative;
-    z-index: 10;
-    width: 320px;
-    height: 210px;
-    background-color: var(--primary-color);
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    transition: all 0.5s ease-in-out;
-}
-.envelope-flap {
-    position: absolute; top: 0; left: 0; width: 100%; height: 105px;
-    background-color: var(--primary-color); transform-origin: top;
-    transition: transform 0.5s ease-in-out;
-    clip-path: polygon(0 0, 100% 0, 50% 100%); border-radius: 10px 10px 0 0;
-}
-.envelope-body {
-    position: absolute; top: 105px; left: 0; width: 100%; height: 105px;
-    background-color: var(--primary-color); border-radius: 0 0 10px 10px;
-}
-.envelope-content-preview {
-    position: absolute; top: 10px; left: 10px; width: 300px; height: 180px;
-    background: var(--background-light); text-align: center;
-    display: flex; justify-content: center; align-items: center;
-    font-family: var(--font-heading); font-size: 1.8rem; color: var(--primary-color);
-    transition: transform 0.5s ease-in-out; border-radius: 5px;
-}
-#open-button {
-    position: absolute; bottom: -60px; left: 50%; transform: translateX(-50%);
-    padding: 10px 25px; font-family: var(--font-heading); font-size: 1.1rem;
-    background-color: white; color: var(--primary-color); border: none;
-    border-radius: 25px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
+.envelope { position: relative; z-index: 10; width: 320px; height: 210px; background-color: var(--primary-color); border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: all 0.5s ease-in-out; }
+.envelope-flap { position: absolute; top: 0; left: 0; width: 100%; height: 105px; background-color: var(--primary-color); transform-origin: top; transition: transform 0.5s ease-in-out; clip-path: polygon(0 0, 100% 0, 50% 100%); border-radius: 10px 10px 0 0; }
+.envelope-body { position: absolute; top: 105px; left: 0; width: 100%; height: 105px; background-color: var(--primary-color); border-radius: 0 0 10px 10px; }
+.envelope-content-preview { position: absolute; top: 10px; left: 10px; width: 300px; height: 180px; background: var(--background-light); text-align: center; display: flex; justify-content: center; align-items: center; font-family: var(--font-heading); font-size: 1.8rem; color: var(--primary-color); transition: transform 0.5s ease-in-out; border-radius: 5px; }
+#open-button { position: absolute; bottom: -60px; left: 50%; transform: translateX(-50%); padding: 10px 25px; font-family: var(--font-heading); font-size: 1.1rem; background-color: white; color: var(--primary-color); border: none; border-radius: 25px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
 .envelope.open .envelope-flap { transform: rotateX(180deg); }
 .envelope.open .envelope-content-preview { transform: translateY(-130px); }
 .envelope.disappear { transform: scale(0); opacity: 0; }
 .hidden { display: none; }
 
-
 /* --- RESPONSIVE DESIGN --- */
 @media (max-width: 600px) {
-    body { 
-        padding: 0; 
-        align-items: center; 
-    }
-
-    .envelope {
-        width: 90%; 
-        max-width: 320px;
-        height: 190px;
-        position: fixed; 
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    .envelope-content-preview {
-        width: calc(100% - 20px);
-        height: calc(100% - 30px);
-        font-size: 1.5rem;
-    }
-
-    #open-button {
-        bottom: -50px; 
-        font-size: 1rem;
-        padding: 8px 20px;
-    }
-
-    .card {
-        width: 100%;
-        min-height: 100vh;
-        border-radius: 0;
-        padding: 0; /* Remove padding from card itself */
-        box-shadow: none;
-        position: relative; 
-        margin-top: 0; 
-        display: flex; /* Helps center the wrapper */
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .content-wrapper {
-        width: calc(100% - 20px); /* Wrapper takes up most of the card width */
-        padding: 20px 10px;
-    }
-    
-    .hanumanji-img { 
-        width: 150px;
-        margin-bottom: 15px; 
-    }
-
-    .intro-text { 
-        font-size: 1rem; 
-        margin-bottom: 15px; 
-    }
-
-    .card-content { 
-        padding: 0; /* No padding needed on this container anymore */
-    }
-
+    body { padding: 0; align-items: center; }
+    .envelope { width: 90%; max-width: 320px; height: 190px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .envelope-content-preview { width: calc(100% - 20px); height: calc(100% - 30px); font-size: 1.5rem; }
+    #open-button { bottom: -50px; font-size: 1rem; padding: 8px 20px; }
+    .card { width: 100%; min-height: 100vh; border-radius: 0; padding: 20px 15px; box-shadow: none; margin-top: 0; }
+    .hanumanji-img { width: 120px; margin-bottom: 15px; }
+    .intro-text { font-size: 1rem; margin-bottom: 15px; }
     .baby-frame { padding: 6px; margin-bottom: 8px; }
     .baby-img { width: 100px; height: 100px; border-width: 3px; }
     .baby-name { font-size: 3rem; margin-bottom: 15px; }
     .event-details { font-size: 0.95rem; margin-bottom: 25px; }
     .schedule, .venue, .rsvp { font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; }
     .closing-text { font-size: 1rem; margin-top: 15px; }
-
-    .countdown { 
-        width: calc(100% - 20px); 
-        gap: 10px; 
-        padding: 12px; 
-        margin: 25px auto;
-    }
+    .countdown { width: 100%; gap: 10px; padding: 12px; margin: 25px auto; }
     .countdown div { font-size: 0.8rem; }
     .countdown span { font-size: 1.6rem; }
-
-    #gallery-button { 
-        padding: 12px 25px; 
-        font-size: 1rem; 
-        margin-top: 25px;
-    }
-
-    .modal-content { 
-        padding: 15px; 
-        margin: 5% auto; 
-    }
+    #gallery-button { padding: 12px 25px; font-size: 1rem; margin-top: 25px; }
+    .modal-content { padding: 15px; margin: 5% auto; }
     .modal-content h3 { font-size: 1.8rem; margin-bottom: 15px; }
     .close-button { font-size: 40px; top: 10px; right: 10px; }
-    .gallery-grid { 
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); 
-        gap: 10px;
-    }
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
 }
