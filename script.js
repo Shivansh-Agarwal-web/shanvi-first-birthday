@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const galleryGrid = document.getElementById('gallery-grid');
     const petalContainer = document.getElementById('petal-container');
     
-    // --- ENVELOPE & CARD REVEAL LOGIC (Restored) ---
+    // --- ENVELOPE & CARD REVEAL LOGIC ---
     openButton.addEventListener('click', () => {
         envelope.classList.add('open');
         setTimeout(() => {
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- GALLERY MODAL LOGIC (Verified) ---
+    // --- GALLERY MODAL LOGIC ---
     const openGallery = () => {
         galleryModal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
