@@ -6,8 +6,7 @@
     <title>Shanvi's 1st Birthday!</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Poppins:wght@400;600&family=Tangerine:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,24 +21,27 @@
     </div>
 
     <div id="card" class="card hidden">
+        <div class="top-decorations">
+            <div class="diya-group left">
+                <span class="flower-motif">🌸</span>
+                <img src="images/diya.png" alt="Diya lamp" class="diya">
+            </div>
+            <div class="diya-group right">
+                <img src="images/diya.png" alt="Diya lamp" class="diya">
+                <span class="flower-motif">🌸</span>
+            </div>
+        </div>
+
         <div class="card-content">
-            <img src="images/hanumanji.jpg" alt="Shree Hanumanji" class="hanumanji-img">
+            <img src="images/hanumanji.png" alt="Shree Hanumanji" class="hanumanji-img">
             
             <p class="intro-text">With the divine blessings of Shree Hanumanji,</p>
-            <h1>You're invited to celebrate the 1st Birthday of our little angel</h1>
+            <h1>You're invited to join us in celebrating the 1st Birthday of our little angel</h1>
             
             <img src="images/baby-cartoon.png" alt="Baby Shanvi" class="baby-img">
-            <h2 class="baby-name">SHANVI</h2>
+            <h2 class="baby-name">Shanvi</h2>
             
             <p class="event-details">with Sundarkand Path & Bhajan Sandhya followed by lunch.</p>
-
-            <div id="countdown" class="countdown">
-                <div><span id="days">0</span> Days</div>
-                <div><span id="hours">0</span> Hours</div>
-                <div><span id="minutes">0</span> Minutes</div>
-                <div><span id="seconds">0</span> Seconds</div>
-            </div>
-            <canvas id="confetti-canvas"></canvas>
 
             <div class="schedule">
                 <div class="schedule-item">
@@ -51,6 +53,10 @@
                     <p>11:00 AM</p>
                 </div>
                 <div class="schedule-item">
+                    <h3>Breakfast</h3>
+                    <p>11:00 AM</p>
+                </div>
+                <div class="schedule-item">
                     <h3>Lunch</h3>
                     <p>2:00 PM</p>
                 </div>
@@ -59,7 +65,6 @@
             <div class="venue">
                 <h3>Venue</h3>
                 <p>Wadhaawa Greens Resort, Darhiyal Road, Kashipur</p>
-                <a href="https://goo.gl/maps/<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3483.246890137966!2d78.96015847552133!3d29.186857375366696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a430acfa7e8c3%3A0xd059469c56d0c76f!2sWADHAAWA%20GREENS%20RESORT!5e0!3m2!1sen!2sin!4v1756924659982!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" target="_blank" class="map-button">View on Google Maps</a>
             </div>
 
             <div class="rsvp">
@@ -67,7 +72,22 @@
                 <p class="closing-text">Your presence will make the day truly special 💖</p>
             </div>
 
+            <div id="countdown" class="countdown">
+                <div><span id="days">0</span> Days</div>
+                <div><span id="hours">0</span> Hours</div>
+                <div><span id="minutes">0</span> Minutes</div>
+                <div><span id="seconds">0</span> Seconds</div>
+            </div>
+            <canvas id="confetti-canvas"></canvas>
+
             <button id="gallery-button">A Glimpse of Her First Year 📸</button>
+        </div>
+
+        <div class="bottom-decorations">
+            <div class="animated-item balloon balloon-1">🎈</div>
+            <div class="animated-item balloon balloon-2">🎈</div>
+            <div class="animated-item giftbox giftbox-1">🎁</div>
+            <div class="animated-item giftbox giftbox-2">🎁</div>
         </div>
     </div>
 
@@ -76,7 +96,7 @@
         <div class="modal-content">
             <h3>Shanvi's First Year</h3>
             <div id="gallery-grid" class="gallery-grid">
-                </div>
+            </div>
         </div>
     </div>
     
