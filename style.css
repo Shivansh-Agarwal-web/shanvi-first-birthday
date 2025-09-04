@@ -1,5 +1,5 @@
 /* ========================================= */
-/* FINAL FESTIVE DESIGN (ALL ELEMENTS ON NEW JPEG BACKGROUND) */
+/* FINAL FESTIVE DESIGN (FIX FOR READABILITY ON BACKGROUND IMAGE) */
 /* ========================================= */
 
 :root {
@@ -20,7 +20,7 @@ body {
     color: var(--text-color);
     display: flex;
     justify-content: center;
-    align-items: center; /* Centered for the envelope, will adjust for card after open */
+    align-items: center;
     min-height: 100vh;
     padding: 40px 20px;
     box-sizing: border-box;
@@ -40,7 +40,7 @@ body {
 .background-pattern {
     width: 100%;
     height: 100%;
-    background-image: url('images/background-pattern.jpg'); /* Your subtle pattern for the very back */
+    background-image: url('images/background-pattern.jpg');
     background-size: cover;
     opacity: 0.15;
 }
@@ -74,18 +74,16 @@ body {
 .card {
     position: relative;
     z-index: 2;
-    background-image: url('images/card-main-background.jpeg'); /* YOUR NEW MAIN BACKGROUND IMAGE */
+    background-image: url('images/card-main-background.jpeg');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 500px;
     text-align: center;
-    overflow: hidden; /* Ensures content stays within rounded corners */
-    padding-top: 30px; /* Adjust padding to give space at top */
-    padding-bottom: 30px; /* Adjust padding to give space at bottom */
+    overflow: hidden;
+    padding: 20px; /* Give some space for the wrapper */
     
     opacity: 0;
     transform: scale(0.9);
@@ -97,18 +95,23 @@ body {
     transform: scale(1);
 }
 
+/* NEW: This wrapper adds the semi-transparent layer for readability */
+.content-wrapper {
+    background-color: rgba(255, 250, 240, 0.9); /* Semi-transparent cream */
+    border-radius: 15px; /* Slightly smaller radius than the card */
+    padding: 30px 15px;
+}
+
 .card-content {
-    padding: 0 30px; /* Horizontal padding for content */
+    /* Padding is now handled by the content-wrapper */
 }
 
 /* --- CONTENT STYLING --- */
 .hanumanji-img { 
-    width: 180px; /* Even larger for impact */
+    width: 180px;
     height: auto;
     margin-bottom: 20px; 
     filter: drop-shadow(0 3px 6px rgba(0,0,0,0.2)); 
-    position: relative; /* Ensure it layers correctly over background */
-    z-index: 3;
 }
 
 .intro-text { 
@@ -116,10 +119,8 @@ body {
     line-height: 1.6; 
     margin: 0 auto 25px auto; 
     max-width: 400px; 
-    position: relative; 
-    z-index: 3;
-    padding: 0 15px; /* Add padding to prevent text touching edges */
-    color: var(--text-color); /* Explicitly set color for readability on background */
+    padding: 0 15px;
+    color: var(--text-color);
 }
 
 .baby-frame { 
@@ -129,8 +130,6 @@ body {
     border-radius: 50%; 
     margin-bottom: 10px; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
-    position: relative;
-    z-index: 3;
 }
 .baby-img { 
     width: 130px; 
@@ -146,8 +145,6 @@ body {
     margin: 0 0 20px 0; 
     line-height: 1; 
     text-shadow: 2px 2px 3px rgba(0,0,0,0.1); 
-    position: relative;
-    z-index: 3;
 }
 .event-details { 
     font-size: 1.1rem; 
@@ -182,8 +179,6 @@ body {
     width: 90%; 
     max-width: 350px; 
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
-    position: relative;
-    z-index: 3;
 }
 .countdown div { font-family: var(--font-heading); font-size: 0.9rem; }
 .countdown span { display: block; font-size: 1.8rem; line-height: 1; }
@@ -201,8 +196,6 @@ body {
     cursor: pointer; 
     box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
     transition: all 0.3s ease; 
-    position: relative;
-    z-index: 3;
 }
 #gallery-button:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
 
@@ -259,7 +252,7 @@ body {
 .hidden { display: none; }
 
 
-/* --- RESPONSIVE DESIGN (UPDATED FOR MOBILE ALIGNMENT) --- */
+/* --- RESPONSIVE DESIGN --- */
 @media (max-width: 600px) {
     body { 
         padding: 0; 
@@ -292,16 +285,22 @@ body {
         width: 100%;
         min-height: 100vh;
         border-radius: 0;
-        padding-top: 20px; /* Adjusted padding-top for mobile */
+        padding: 0; /* Remove padding from card itself */
         box-shadow: none;
         position: relative; 
         margin-top: 0; 
-        padding-bottom: 20px; 
+        display: flex; /* Helps center the wrapper */
+        align-items: center;
+        justify-content: center;
     }
-
-    /* Adjust hanumanji section for mobile */
+    
+    .content-wrapper {
+        width: calc(100% - 20px); /* Wrapper takes up most of the card width */
+        padding: 20px 10px;
+    }
+    
     .hanumanji-img { 
-        width: 150px; /* Keep it larger even on mobile */
+        width: 150px;
         margin-bottom: 15px; 
     }
 
@@ -311,19 +310,18 @@ body {
     }
 
     .card-content { 
-        padding: 0 15px 15px 15px; 
-        text-align: center; 
+        padding: 0; /* No padding needed on this container anymore */
     }
 
     .baby-frame { padding: 6px; margin-bottom: 8px; }
     .baby-img { width: 100px; height: 100px; border-width: 3px; }
-    .baby-name { font-size: 3rem; margin-bottom: 15px; } /* Slightly smaller for mobile */
+    .baby-name { font-size: 3rem; margin-bottom: 15px; }
     .event-details { font-size: 0.95rem; margin-bottom: 25px; }
     .schedule, .venue, .rsvp { font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; }
     .closing-text { font-size: 1rem; margin-top: 15px; }
 
     .countdown { 
-        width: calc(100% - 30px); 
+        width: calc(100% - 20px); 
         gap: 10px; 
         padding: 12px; 
         margin: 25px auto;
