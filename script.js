@@ -8,11 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add more image file names here
     ];
     const eventDate = new Date(2025, 8, 17, 11, 0, 0).getTime(); // September 17, 2025, 11:00 AM
-    const numberOfPetals = 30; // How many petals to animate
+    const numberOfPetals = 30;
     // --- END OF CONFIGURATION ---
 
 
     // Get Elements
+    const envelope = document.getElementById('envelope');
+    const openButton = document.getElementById('open-button');
     const card = document.getElementById('card');
     const countdownElements = {
         days: document.getElementById('days'),
@@ -26,20 +28,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const galleryGrid = document.getElementById('gallery-grid');
     const petalContainer = document.getElementById('petal-container');
     
+    // --- ENVELOPE & CARD REVEAL LOGIC (Restored) ---
+    openButton.addEventListener('click', () => {
+        envelope.classList.add('open');
+        setTimeout(() => {
+            envelope.classList.add('disappear');
+            setTimeout(() => {
+                envelope.style.display = 'none'; // Use style.display to fully remove it
+                card.classList.remove('hidden');
+                card.classList.add('visible');
+            }, 500);
+        }, 500);
+    });
+
     // --- CREATE FALLING PETALS ---
     function createPetals() {
         for (let i = 0; i < numberOfPetals; i++) {
             const petal = document.createElement('div');
             petal.classList.add('petal');
-            
-            // Randomize properties for a natural look
             petal.style.left = `${Math.random() * 100}vw`;
-            petal.style.animationDuration = `${Math.random() * 5 + 8}s`; // Slower fall
+            petal.style.animationDuration = `${Math.random() * 5 + 8}s`;
             petal.style.animationDelay = `${Math.random() * 10}s`;
             petal.style.width = `${Math.random() * 10 + 10}px`;
             petal.style.height = petal.style.width;
             petal.style.opacity = Math.random();
-
             petalContainer.appendChild(petal);
         }
     }
@@ -49,14 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const countdownInterval = setInterval(() => {
         const now = new Date().getTime();
         const distance = eventDate - now;
-
         if (distance < 0) {
             clearInterval(countdownInterval);
             document.getElementById('countdown').innerHTML = "<h2>The celebration has begun!</h2>";
             triggerConfetti();
             return;
         }
-
         countdownElements.days.innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
         countdownElements.hours.innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         countdownElements.minutes.innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -73,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- GALLERY MODAL LOGIC ---
+    // --- GALLERY MODAL LOGIC (Verified) ---
     const openGallery = () => {
         galleryModal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
@@ -101,5 +111,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- INITIALIZE EVERYTHING ---
     populateGallery();
     createPetals();
-
 });
